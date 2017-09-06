@@ -56,6 +56,7 @@ Configurações de Banco de Dados:
 
 config/app.php
 
+	'host' => 'localhost',
 	'username' => 'SEU_LOGIN',
 	'password' => 'SUA_SENHA',
 	'database' => 'todo',

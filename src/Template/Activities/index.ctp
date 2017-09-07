@@ -5,14 +5,13 @@
       </div>
 <div class="table-responsive">
     <div id="list">
-        <form>
-            <div class="col-md-6">
-                <input type="text" id="addActivity" class="form-control" placeholder="O precisa ser feito?">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-lg btn-success addActivity btn-sm form-control" >Adicionar</button>
-            </div>
-        </form>
+        
+        <div class="col-md-6">
+            <input type="text" id="addActivity" class="form-control" placeholder="O precisa ser feito?">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-lg btn-success addActivity btn-sm form-control" >Adicionar</button>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>

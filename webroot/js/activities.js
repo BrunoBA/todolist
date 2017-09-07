@@ -12,6 +12,9 @@
 				var total = $("#total").text();
 				var total = $("#total").text(parseInt(++total));
 
+				$("#addActivity").val('');
+				$("#addActivity").focus();
+
 			},"html"
 		);
 	});

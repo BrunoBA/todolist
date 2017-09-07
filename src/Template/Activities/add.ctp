@@ -6,10 +6,10 @@
         <span id="<?= "span-".$id;?>" class="spans"><?= $nome; ?></span>
         <div class="div-input" id="<?= "text-span-".$id;?>" style="display: none;">
             <input id="<?= "text-".$id;?>" class="input-name" type="text" value="<?= $nome; ?>">
-            <input type="button" value="Alterar" class="change" name="Alterar"></input>
+            <button class="btn btn-lg btn-primary btn-sm change" >Salvar</button>
         </div>
     </td>
     <td>
-        <input id="<?= $id; ?>" type="button" value="Remover" class="rmActivity" name="Remover"></input>
+        <button id="<?= $id; ?>" class="btn btn-lg btn-danger btn-sm rmActivity" >Remover</button>
     </td>
 </tr>

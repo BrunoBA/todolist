@@ -34,7 +34,7 @@
                         
                         <div class="div-input" id="text-span-<?= $activity->id;?>" style="display: none;">
                             <input id="text-<?= $activity->id;?>" class="input-name" type="text" value="<?= $activity->nome; ?>">
-                            <button class="btn btn-lg btn-primary btn-sm change" >Alterar</button>
+                            <button class="btn btn-lg btn-primary btn-sm change" >Salvar</button>
                         </div>
 
                     </td>

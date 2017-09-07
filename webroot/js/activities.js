@@ -1,4 +1,5 @@
 	
+	// METODO RESPONSÁVEL POR ADICIONAR NOVAS ATIVIDADES
 	$(".addActivity").click(function()
 	{			
 		var name = $("#addActivity").val();
@@ -15,6 +16,7 @@
 		);
 	});
 
+	// MÉTODO RESPONSÁVEL POR REMOVER ATIVIDADES
 	$(document).on('click', '.rmActivity',function()
 	{	
 		fechar_inputs();		
@@ -42,7 +44,8 @@
 		}
 	});
 
-	$(document).on('change', '.doneActivity',function()
+	// MÉTODO RESPONSÁVEL POR CONCLUIR ATIVIDADS
+	$(document).on('change', '.doActivity',function()
 	{		
 		fechar_inputs();		
 		var id = $(this).attr('id');
@@ -66,6 +69,7 @@
 		}
 	});
 
+	//MÉTODO RESPONSÁVEL POR ABRIR O INPUT PARA ALTERAR A ATIVIDADE 
 	$(document).on('click', '.spans',function()
 	{
 		fechar_inputs();
@@ -79,6 +83,7 @@
 		$("#text-"+idText).focus();
 	})
 
+	//MÉTODO RESPONSÁVEL POR EFETUAR A ALTERAÇÃO DOS DADOS 
 	$(document).on('click', '.change',function()
 	{
 

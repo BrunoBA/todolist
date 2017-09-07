@@ -1,6 +1,6 @@
 <tr id="<?= "tr-".$id;?>">
     <td style="text-align: center;">
-        <input id="<?= $id; ?>" class="doneActivity" type="checkbox" <?= ($concluido) ? 'checked="checked"' : '';?> >
+        <input id="<?= $id; ?>" class="doActivity" type="checkbox" <?= ($concluido) ? 'checked="checked"' : '';?> >
     </td>
     <td >
         <span id="<?= "span-".$id;?>" class="spans"><?= $nome; ?></span>

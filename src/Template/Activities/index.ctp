@@ -1,6 +1,7 @@
  <div class="container">
       <div class="header clearfix">
         <h3 class="text-muted">Todo List</h3>
+        <hr>
       </div>
 <div class="table-responsive">
     <div id="list">
@@ -24,7 +25,7 @@
                 <?php foreach ($activities as $activity): ?>
                 <tr id="tr-<?= $activity->id;?>">
                     <td style="text-align: center;">
-                        <input id="<?= $activity->id; ?>" class="doneActivity" type="checkbox" <?= ($activity->concluido) ? 'checked=""':'';?> >
+                        <input id="<?= $activity->id; ?>" class="doActivity" type="checkbox" <?= ($activity->concluido) ? 'checked=""':'';?> >
                     </td>
                     <td >
                         <span id="span-<?= $activity->id;?>" class="spans">
@@ -46,8 +47,9 @@
             <tfoot>
                 <tr> 
                     <td colspan="3">
-                    Progresso 
-                        <span id="concluded"><?= $done;?></span>/<span id="total"><?= $quantity;?></span>
+                    <h4>Progresso:
+                    <span id="concluded"><?= $done;?></span>/<span id="total"><?= $quantity;?></span>
+                    </h4>
                     </td>
                 </tr>
             </tfoot>
@@ -55,5 +57,4 @@
     </div>
     
 </div>
-<?php echo $this->Html->script("jquery-3.2.1.min.js"); ?>
 <?php echo $this->Html->script("activities.js"); ?>

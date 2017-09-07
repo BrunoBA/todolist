@@ -30,29 +30,27 @@ class ActivitiesController extends AppController
     public function add()
     {   
 
+        // $this->autoRender = false;
+
         $activity = $this->Activities->newEntity();
         if($this->request->is('Ajax')) {
 
             $activity = $this->Activities->patchEntity($activity, $this->request->getData());
 
-            $retorno = array();
+            $retorno = array();            
 
-            $this->autoRender = false;
+            $value =  $this->Activities->save($activity);
 
-            if ($this->Activities->save($activity)) {
-                $retorno['status'] = "sucess";
-                $retorno['msg'] = "Atividade inserida com sucesso!";
-            }else{
-                $retorno['status'] = "error";
-                $retorno['msg'] = "Erro ao inserir atividade!";
+            if ($this->Activities->save($activity)){
+
+                $id = $activity['id'];
+                $nome = $activity['nome'];
+                $concluido = $activity['concluido'];
+                
+                $this->set(compact('id'));
+                $this->set(compact('nome'));
+                $this->set(compact('concluido'));
             }
-
-            // $query = $this->Activities->find('all')->all();
-            // $lastCreated =  $query->last();
-            // var_dump($lastCreated['id']);
-            // die;
-
-            echo json_encode($retorno);
         }
     }
 

@@ -1,23 +1,15 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Activities'), ['action' => 'index']) ?></li>
-    </ul>
-</nav>
-<div class="activities form large-9 medium-8 columns content">
-    <?= $this->Form->create($activity) ?>
-    <fieldset>
-        <legend><?= __('Add Activity') ?></legend>
-        <?php
-            echo $this->Form->control('nome');
-            echo $this->Form->control('excluido');
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<tr id="<?= "tr-".$id;?>">
+    <td style="text-align: center;">
+        <input id="<?= $id; ?>" class="doneActivity" type="checkbox" <?= ($concluido) ? 'checked="checked"' : '';?> >
+    </td>
+    <td >
+        <span id="<?= "span-".$id;?>" class="spans"><?= $nome; ?></span>
+        <div class="div-input" id="<?= "text-span-".$id;?>" style="display: none;">
+            <input id="<?= "text-".$id;?>" class="input-name" type="text" value="<?= $nome; ?>">
+            <input type="button" value="Alterar" class="change" name="Alterar"></input>
+        </div>
+    </td>
+    <td>
+        <input id="<?= $id; ?>" type="button" value="Remover" class="rmActivity" name="Remover"></input>
+    </td>
+</tr>

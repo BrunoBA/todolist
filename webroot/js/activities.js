@@ -6,20 +6,18 @@
 			'/activities/add',
 			{nome:name},
 			function(resposta){
-				if(resposta.status == 'sucess'){
+				$("#concat").append(resposta);
 
-					// var total = $("#total").text();
-					// var total = $("#total").text(parseInt(++total));
-					location.reload();
-				}
-				alert(resposta.msg);
-			},"json"
+				var total = $("#total").text();
+				var total = $("#total").text(parseInt(++total));
+
+			},"html"
 		);
 	});
 
-
-	$(".rmActivity").click(function()
-	{			
+	$(document).on('click', '.rmActivity',function()
+	{	
+		fechar_inputs();		
 		var id = $(this).attr('id');
 		if(confirm("Tem certeza que deseja excluir esta atividade?")){
 			$.post(
@@ -34,19 +32,19 @@
 						var total = $("#total").text(parseInt(--total));
 
 						if(resposta.concluido == 1){
-							var done = $("#concluded").text();
-							var done = $("#concluded").text(parseInt(--done));
+							var concluded = $("#concluded").text();
+							var concluded = $("#concluded").text(parseInt(--concluded));
 						}
 					}
-					alert(resposta.msg);
+					// alert(resposta.msg);
 				},"json"
 			);
 		}
 	});
 
-
-	$(".doneActivity").change(function()
-	{			
+	$(document).on('change', '.doneActivity',function()
+	{		
+		fechar_inputs();		
 		var id = $(this).attr('id');
 		if(confirm("Tem certeza que deseja concluir esta atividade?")){
 			$.post(
@@ -54,7 +52,7 @@
 				{id:id},
 				function(resposta){
 					if(resposta.status == 'sucess'){
-
+						
 						var total = $("#concluded").text();
 						if(resposta.type){
 							var total = $("#concluded").text(parseInt(++total));
@@ -68,8 +66,10 @@
 		}
 	});
 
-	$(".spans").click(function(){
-		
+	$(document).on('click', '.spans',function()
+	{
+		fechar_inputs();
+
 		var id = $(this).attr('id');
 		var idText = id.replace('span-','');
 
@@ -79,7 +79,8 @@
 		$("#text-"+idText).focus();
 	})
 
-	$(".change").click(function(){
+	$(document).on('click', '.change',function()
+	{
 
 		var text = $(this).parent();
 
@@ -109,10 +110,6 @@
 			},"json"
 		);
 	});
-
-	// $(".input-name").blur(function(){
-	// 	fechar_inputs();
-	// });
 
 	function fechar_inputs(){
 		$(".div-input").css("display","none");

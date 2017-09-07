@@ -1,22 +1,23 @@
-<div class="activities index large-8 medium-8 columns content">
-    <h3> TODO LIST </h3>
+ <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted">Todo List</h3>
+      </div>
+<div class="table-responsive">
     <div id="list">
-        <div style="display: inline-block;">
-            <input type="text" id="addActivity" placeholder="O que deseja fazer?">
-            <input type="button" value="Adicionar" class="addActivity" name="Adicionar"></input>
-        </div>
-        <table cellpadding="0" cellspacing="0">
+        <form>
+            <div class="col-md-6">
+                <input type="text" id="addActivity" class="form-control" placeholder="O precisa ser feito?">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-lg btn-success addActivity btn-sm form-control" >Adicionar</button>
+            </div>
+        </form>
+        <table class="table table-striped">
             <thead>
-                 <tr>
-                    <th style="text-align: center;">
-                        Concluído
-                    </th>
-                    <th>
-                        Atividade
-                    </th>
-                    <th>
-                        Ações
-                    </th>
+                <tr>
+                    <th style="text-align: center;" >Conclusão</th>
+                    <th>Atividade</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody id="concat">
@@ -32,12 +33,12 @@
                         
                         <div class="div-input" id="text-span-<?= $activity->id;?>" style="display: none;">
                             <input id="text-<?= $activity->id;?>" class="input-name" type="text" value="<?= $activity->nome; ?>">
-                            <input type="button" value="Alterar" class="change" ></input>
+                            <button class="btn btn-lg btn-primary btn-sm change" >Alterar</button>
                         </div>
 
                     </td>
                     <td>
-                        <input id="<?= $activity->id; ?>" type="button" value="Remover" class="rmActivity"></input>
+                        <button id="<?= $activity->id; ?>" class="btn btn-lg btn-danger btn-sm rmActivity" >Remover</button>
                     </td>
                 </tr>
                 <?php endforeach; ?>

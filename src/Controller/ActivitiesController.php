@@ -132,30 +132,4 @@ class ActivitiesController extends AppController
             echo json_encode($retorno);
         }
     }
-
-    public function update()
-    {
-
-        if($this->request->is('Ajax')) {
-
-            $query = $this->Activities->find('all')
-            ->order(array("Activities.id"=>"DESC"))
-            ->where(array("Activities.excluido" => 0));
-            $activities =  $query->toArray();
-
-            $quantity = count($activities);
-
-            $query = $this->Activities->find('all')
-            ->where(array("Activities.excluido" => 0, "Activities.concluido"=>1));
-            $concluded =  $query->toArray();
-            $done = count($concluded);
-           
-            $this->set(compact('done'));
-            $this->set(compact('quantity'));
-            $this->set(compact('activities'));
-            $this->set('_serialize', ['activities']);
-
-        }
-    }
-
 }

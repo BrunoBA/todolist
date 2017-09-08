@@ -53,7 +53,7 @@ class ActivitiesController extends AppController
             $activity = $this->Activities->get($post['id']);
             $activity->nome = $post['name'];
 
-            if (!empty($post['name']) && $activity['concluido'] == 0 && $this->Activities->save($activity)) {
+            if (!empty($post['name']) &&  $this->Activities->save($activity)) {
                 
                 $this->return['status'] = "success";
                 $this->return['message'] = "Atividade alterada com sucesso!";
@@ -110,10 +110,13 @@ class ActivitiesController extends AppController
             $activity = $this->Activities->get($post['id']);
             $activity->concluido = !$activity['concluido'];
 
+            $action = ($activity->concluido) ? "concluída" : "alterada";
+
             if ($this->Activities->save($activity)) {
                 $this->return['status'] = "success";
                 $this->return['type'] = $activity['concluido'];               
-                $this->return['message'] = "Atividade concluida com sucesso!";
+                $this->return['message'] = "Atividade ".$action." com sucesso!";
+                
             }else{
                 $this->return['status'] = "error";
                 $this->return['message'] = "Erro ao concluir atividade!";

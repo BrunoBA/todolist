@@ -1,4 +1,5 @@
-	
+
+
 	// METODO RESPONSÁVEL POR ADICIONAR NOVAS ATIVIDADES
 	$(".addActivity").click(function()
 	{			
@@ -8,11 +9,13 @@
 			{nome:name},
 			function(resposta){	
 				
-				$("#concat").append(resposta);
-
-				var total = $("#total").text();
-				var total = $("#total").text(parseInt(++total));
-
+				if(resposta != ''){
+					$("#concat").append(resposta);
+					
+					var total = $("#total").text();
+					var total = $("#total").text(parseInt(++total));
+				}
+				
 				$("#addActivity").val('');
 				$("#addActivity").focus();
 
@@ -43,7 +46,7 @@
 						}
 					}else{
 						// alert(resposta.message);
-							alertMessage(resposta.status,resposta.message);
+						alertMessage(resposta.status,resposta.message);
 					}
 					
 				},"json"
@@ -147,13 +150,11 @@
 	{
 		if(status == "success"){
 			$(".alert-success").text(message);
-			$(".alert-success").css('display',"block");
-			// $(".alert-success").fadeIn();
+			$(".alert-success").fadeIn();
 			$(".alert-success").fadeOut(3000);
 		}else{
 			$(".alert-danger").text(message);
-			$(".alert-danger").css('display',"block");
-			// $(".alert-danger").fadeIn();
+			$(".alert-danger").fadeIn();
 			$(".alert-danger").fadeOut(3000);
 		}
 	}

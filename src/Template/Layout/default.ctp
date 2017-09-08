@@ -39,6 +39,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
     <?= $this->Flash->render() ?>
+    <div class="row container">
+        <div class="alert alert-danger alert-dismissable fade in" style="display: none;"></div>
+        <div class="alert alert-success alert-dismissable fade in" style="display: none;"></div>
+    </div>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>

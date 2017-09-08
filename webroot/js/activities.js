@@ -42,7 +42,8 @@
 							var concluded = $("#concluded").text(parseInt(--concluded));
 						}
 					}else{
-						alert(resposta.message);	
+						// alert(resposta.message);
+							alertMessage(resposta.status,resposta.message);
 					}
 					
 				},"json"
@@ -69,7 +70,8 @@
 							var total = $("#concluded").text(parseInt(--total));
 						}
 					}
-					alert(resposta.message);
+					// alert(resposta.message);
+					alertMessage(resposta.status,resposta.message);
 				},"json"
 			);
 		}
@@ -121,12 +123,14 @@
 					$("#text-"+id).val(name);
 				}
 				fechar_inputs();
-				alert(resposta.message);
+				// alert(resposta.message);
+				alertMessage(resposta.status,resposta.message);
 			},"json"
 		);
 	});
 
-	function fechar_inputs(){
+	function fechar_inputs()
+	{
 
 		$(".spans").each(function(){
 			var atividade = $(this).text().trim();
@@ -137,6 +141,21 @@
 
 		$(".div-input").css("display","none");
 		$(".spans").css("display","block");
+	}
+
+	function alertMessage(status, message)
+	{
+		if(status == "success"){
+			$(".alert-success").text(message);
+			$(".alert-success").css('display',"block");
+			// $(".alert-success").fadeIn();
+			$(".alert-success").fadeOut(3000);
+		}else{
+			$(".alert-danger").text(message);
+			$(".alert-danger").css('display',"block");
+			// $(".alert-danger").fadeIn();
+			$(".alert-danger").fadeOut(3000);
+		}
 	}
 
 

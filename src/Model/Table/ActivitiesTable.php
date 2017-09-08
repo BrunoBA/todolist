@@ -65,6 +65,7 @@ class ActivitiesTable extends Table
 
         $validator
             ->scalar('nome')
+            ->notBlank('nome',"Atividade obrigatória")
             ->notEmpty('nome',"Atividade obrigatória!");            
 
         $validator

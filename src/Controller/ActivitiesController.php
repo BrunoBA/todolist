@@ -53,15 +53,14 @@ class ActivitiesController extends AppController
             $activity = $this->Activities->get($post['id']);
             $activity->nome = $post['name'];
 
-            if (!empty($post['name']) &&  $this->Activities->save($activity)) {
+            if (!empty($post['name'] && trim($post['name'])) && $this->Activities->save($activity)) {
                 
                 $this->return['status'] = "success";
                 $this->return['message'] = "Atividade alterada com sucesso!";
 
             }else{
-
                 $this->return['status'] = "error";
-                $this->return['message'] = "Erro ao alterar atividade!";
+                $this->return['message'] = (!empty($post['name'] && trim($post['name']))) ? "Erro ao alterar atividade!" : "Nome da atividade é obrigatória!";
             }
 
             echo json_encode($this->return);
@@ -89,7 +88,7 @@ class ActivitiesController extends AppController
                 $this->return['message'] = "Atividade removida com sucesso!";
             }else{
                 $this->return['status'] = "error";
-                $this->return['message'] = "Erro ao remover atividade!";
+                $this->return['message'] = ($activity['concluido'] == 0) ? "Erro ao remover atividade!" : "Não é possível deletar uma atividade concluída!";
             }
 
             echo json_encode($this->return);

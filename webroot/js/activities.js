@@ -6,7 +6,8 @@
 		$.post(
 			'/activities/add',
 			{nome:name},
-			function(resposta){
+			function(resposta){	
+				
 				$("#concat").append(resposta);
 
 				var total = $("#total").text();
@@ -29,7 +30,7 @@
 				'/activities/delete',
 				{id:id},
 				function(resposta){
-					if(resposta.status == 'sucess'){
+					if(resposta.status == 'success'){
 
 						$("#tr-"+id).css('display','none');
 
@@ -40,8 +41,10 @@
 							var concluded = $("#concluded").text();
 							var concluded = $("#concluded").text(parseInt(--concluded));
 						}
+					}else{
+						alert(resposta.message);	
 					}
-					// alert(resposta.msg);
+					
 				},"json"
 			);
 		}
@@ -57,7 +60,7 @@
 				'/activities/concluir',
 				{id:id},
 				function(resposta){
-					if(resposta.status == 'sucess'){
+					if(resposta.status == 'success'){
 						
 						var total = $("#concluded").text();
 						if(resposta.type){
@@ -66,7 +69,7 @@
 							var total = $("#concluded").text(parseInt(--total));
 						}
 					}
-					alert(resposta.msg);
+					alert(resposta.message);
 				},"json"
 			);
 		}
@@ -110,16 +113,28 @@
 				name:name,
 			},
 			function(resposta){
-				if(resposta.status == 'sucess'){
+
+				if(resposta.status == 'success'){
 					$("#span-"+id).text(name);
-					fechar_inputs();
+				}else{
+					console.log("#text-"+id);
+					$("#text-"+id).val(name);
 				}
-				alert(resposta.msg);
+				fechar_inputs();
+				alert(resposta.message);
 			},"json"
 		);
 	});
 
 	function fechar_inputs(){
+
+		$(".spans").each(function(){
+			var atividade = $(this).text().trim();
+			var id = $(this).attr('id').replace('span-','');
+
+			$("#text-"+id).val(atividade);
+		});
+
 		$(".div-input").css("display","none");
 		$(".spans").css("display","block");
 	}

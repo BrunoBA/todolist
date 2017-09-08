@@ -28,4 +28,25 @@ class Activity extends Entity
         '*' => true,
         'id' => false
     ];
+
+
+    // protected function _getNome($nome)
+    // {
+    //     $nome = strtoupper($nome);
+    //     return $nome;
+    // }
+
+
+    public function manageError(){
+
+        $message = "";        
+
+        foreach ($this->getErrors() as $value) {
+            foreach ($value as $error) {
+                $message .= $error;
+            }
+        }
+        
+        return $message;
+    }
 }

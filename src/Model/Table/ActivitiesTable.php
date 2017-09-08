@@ -6,21 +6,32 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Activities Model
- *
- * @method \App\Model\Entity\Activity get($primaryKey, $options = [])
- * @method \App\Model\Entity\Activity newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\Activity[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Activity|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Activity patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Activity[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\Activity findOrCreate($search, callable $callback = null, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
- */
 class ActivitiesTable extends Table
 {
+
+    public function getAll($flag = TRUE){
+
+        $query = $this->find('all')
+        ->order(array("Activities.id"=>"ASC"))
+        ->where(array("Activities.excluido" => 0));
+        $activities =  $query->toArray();
+
+        if($flag)
+            return $activities;
+        return count($activities);
+    }
+
+    public function getCompleted($flag = TRUE){
+
+        $query = $this->find('all')
+        ->where(array("Activities.excluido" => 0, "Activities.concluido"=>1));
+        $conclusions =  $query->toArray();
+        
+        if($flag)
+            return $conclusions;
+        return count($conclusions);
+        
+    }
 
     /**
      * Initialize method
@@ -53,11 +64,17 @@ class ActivitiesTable extends Table
 
         $validator
             ->scalar('nome')
-            ->allowEmpty('nome');
+            ->notEmpty('nome',"Atividade obrigatória!");            
 
         $validator
             ->allowEmpty('excluido');
 
         return $validator;
+    }
+
+    public function validationUpdate(Validator $validator)
+    {
+        echo "daale";
+        die;
     }
 }

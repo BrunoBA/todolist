@@ -59,7 +59,7 @@
 	{		
 		fechar_inputs();		
 		var id = $(this).attr('id');
-		if(confirm("Tem certeza que deseja concluir esta atividade?")){
+		// if(confirm("Tem certeza que deseja concluir esta atividade?")){
 			$.post(
 				'/activities/concluir',
 				{id:id},
@@ -77,7 +77,7 @@
 					alertMessage(resposta.status,resposta.message);
 				},"json"
 			);
-		}
+		// }
 	});
 
 	//MÉTODO RESPONSÁVEL POR ABRIR O INPUT PARA ALTERAR A ATIVIDADE 
